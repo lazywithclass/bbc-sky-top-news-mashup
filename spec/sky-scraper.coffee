@@ -1,15 +1,12 @@
-require 'coffee-script'
+require 'should'
 $ = require 'jquery'
-scraper = require '../scrapers/sky'
-htmlFixture = ''
-
-should = require 'should'
+Scraper = require '../scrapers/sky'
 
 describe 'testing', ->
 
   it 'loads the fixture html', (done) ->
     require('fs').readFile './spec/fixtures/news.sky.com.html', 'utf8', (err, html) ->
-      htmlFixture = html
+      this.scraper = new Scraper html
       done()
 
 describe 'sky scraping :)', ->
@@ -22,7 +19,7 @@ describe 'sky scraping :)', ->
       scraper.top.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
-      top = scraper.top htmlFixture
+      top = scraper.top()
       domify(top).find('strong').html().should.contain 'Helicopter Crashes Into'
 
   describe 'secondary stories', ->
@@ -31,7 +28,7 @@ describe 'sky scraping :)', ->
       scraper.secondary.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
-      secondary = scraper.secondary htmlFixture
+      secondary = scraper.secondary()
       secondary.should.be.instanceOf Array
       secondary.length.should.equal 3
       secondary[0].should.include 'Video Of Helicopter'
@@ -44,7 +41,7 @@ describe 'sky scraping :)', ->
       scraper.tertiary.should.be.type 'function'
 
     it 'parses the html extracting the other stories', ->
-      tertiary = scraper.tertiary htmlFixture
+      tertiary = scraper.tertiary()
       tertiary.should.be.instanceOf Array
       tertiary.length.should.equal 6
       tertiary[0].should.include 'Ministers To Fund'

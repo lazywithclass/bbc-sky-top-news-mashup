@@ -1,21 +1,27 @@
 var $ = require('jquery');
 
-module.exports.top = function(html) {
-  return $(html).find('#latest_supermain_hero').html();
+function Sky (html) {
+  this.$html = $(html);
+}
+
+Sky.prototype.top = function() {
+  return this.$html.find('#latest_supermain_hero').html();
 };
 
-module.exports.secondary = function(html) {
+Sky.prototype.secondary = function() {
   var secondary = [];
-  $(html).find('#latest_secondary > article').each(function() {
+  this.$html.find('#latest_secondary > article').each(function() {
     secondary.push($(this).html().replace(/[\n\r\t]/g, '').trim());
   });
   return secondary;
 };
 
-module.exports.tertiary = function(html) {
+Sky.prototype.tertiary = function() {
   var tertiary = [];
-  $(html).find('#latest_tertiary > article').each(function() {
+  this.$html.find('#latest_tertiary > article').each(function() {
     tertiary.push($(this).html().replace(/[\n\r\t]/g, '').trim());
   });
   return tertiary;
 };
+
+module.exports = Sky;

@@ -1,15 +1,12 @@
-require 'coffee-script'
+require 'should'
 $ = require 'jquery'
-scraper = require '../scrapers/bbc'
-htmlFixture = ''
-
-should = require 'should'
+Scraper = require '../scrapers/bbc'
 
 describe 'testing', ->
 
   it 'loads the fixture html', (done) ->
     require('fs').readFile './spec/fixtures/bbc.co.uk.news.html', 'utf8', (err, html) ->
-      htmlFixture = html
+      this.scraper = new Scraper html
       done()
 
 describe 'bbc scraping', ->
@@ -22,7 +19,7 @@ describe 'bbc scraping', ->
       scraper.top.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
-      top = scraper.top htmlFixture
+      top = scraper.top()
       domify(top).find('.top-story-header a').html().should.contain 'China jets scrambled in air zone'
 
   describe 'second story', ->
@@ -31,7 +28,7 @@ describe 'bbc scraping', ->
       scraper.second.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
-      second = scraper.second htmlFixture
+      second = scraper.second()
       domify(second).find('.secondary-story-header a').html().should.contain 'EU rejects Russia \'veto\' on Ukraine'
 
   describe 'third story', ->
@@ -40,7 +37,7 @@ describe 'bbc scraping', ->
       scraper.third.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
-      third = scraper.third htmlFixture
+      third = scraper.third()
       domify(third).find('.secondary-story-header a').html().should.contain 'German policeman in \'cannibal\' case'
 
   describe 'other stories with summary', ->
@@ -49,7 +46,7 @@ describe 'bbc scraping', ->
       scraper.othersWithSummary.should.be.type 'function'
 
     it 'parses the html extracting the other stories with a summary', ->
-      othersWithSummary = scraper.othersWithSummary htmlFixture
+      othersWithSummary = scraper.othersWithSummary()
       othersWithSummary.should.be.instanceOf Array
       othersWithSummary.length.should.equal 3
       othersWithSummary[0].should.include 'Africa row over Zuma'
@@ -59,12 +56,11 @@ describe 'bbc scraping', ->
   describe 'other stories', ->
 
     it 'exports a function', ->
-      scraper.others.should.be.type 'function'
+     scraper.others.should.be.type 'function'
 
     it 'parses the html extracting the other stories', ->
-      others = scraper.others htmlFixture
+      others = scraper.others()
       others.should.be.instanceOf Array
-      scraper.others(htmlFixture, 3).length.should.equal 3
-      scraper.others(htmlFixture, 6).length.should.equal 6
-      scraper.others(htmlFixture).length.should.equal 4
-
+      scraper.others(3).length.should.equal 3
+      scraper.others(6).length.should.equal 6
+      scraper.others().length.should.equal 4
