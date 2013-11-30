@@ -7,8 +7,6 @@ should = require 'should'
 
 describe 'testing', ->
 
-  it 'works', -> (42).should.equal 42
-
   it 'loads the fixture html', (done) ->
     require('fs').readFile './spec/fixtures/bbc.news.html', 'utf8', (err, html) ->
       htmlFixture = html
