@@ -1,6 +1,6 @@
 require 'coffee-script'
 $ = require 'jquery'
-scraper = require '../bbc-scraper'
+scraper = require '../scrapers/bbc'
 htmlFixture = ''
 
 should = require 'should'
