@@ -14,7 +14,6 @@ module.exports.third = function(html) {
 
 module.exports.othersWithSummary = function(html) {
   var othersWithSummary = [];
-  // map isn't working
   $(html).find('ul.other-top-stories-stories > li.with-summary').each(function() {
     othersWithSummary.push($(this).html().replace(/[\n\r\t]/g, '').trim());
   });
@@ -24,7 +23,6 @@ module.exports.othersWithSummary = function(html) {
 module.exports.others = function(html, amount) {
   var others = [];
   amount = amount || 4;
-  // map isn't working
   $(html).find('ul.other-top-stories-stories > li:not(.with-summary) :lt(' + amount + ')').each(function() {
     others.push($(this).html().replace(/[\n\r\t]/g, '').trim());
   });
