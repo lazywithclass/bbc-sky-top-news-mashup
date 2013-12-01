@@ -70,6 +70,6 @@ describe 'bbc scraping', ->
     it 'are obtained from a function', ->
       scraper.all.should.be.type 'function'
 
-    it 'concatenates all news', ->
+    it 'concatenates all news removing whitespace', ->
       all = scraper.top() + scraper.second() + scraper.third() + scraper.others();
-      scraper.all().should.be.equal all
+      scraper.all().should.be.equal all.replace(/[\n\r\t]/g, '').trim()

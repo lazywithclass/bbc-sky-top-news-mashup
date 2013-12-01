@@ -56,6 +56,6 @@ describe 'sky scraping :)', ->
     it 'are obtained from a function', ->
       scraper.all.should.be.type 'function'
 
-    it 'concatenates all news', ->
-      all = scraper.top() + scraper.secondary() + scraper.tertiary();
-      scraper.all().should.be.equal all
+    it 'concatenates all news removing whitespace', ->
+      all = scraper.top() + scraper.secondary() + scraper.tertiary()
+      scraper.all().should.be.equal all.replace(/[\n\r\t]/g, '').trim()

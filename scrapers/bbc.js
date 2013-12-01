@@ -22,7 +22,7 @@ BBC.prototype.third = function() {
 BBC.prototype.othersWithSummary = function() {
   var othersWithSummary = [];
   this.$html.find('ul.other-top-stories-stories > li.with-summary').each(function() {
-    othersWithSummary.push($(this).html().replace(/[\n\r\t]/g, '').trim());
+    othersWithSummary.push($(this).html());
   });
   return othersWithSummary;
 };
@@ -31,13 +31,14 @@ BBC.prototype.others = function(amount) {
   var others = [];
   amount = amount || 7;
   this.$html.find('ul.other-top-stories-stories > li:not(.with-summary) :lt(' + amount + ')').each(function() {
-    others.push($(this).html().replace(/[\n\r\t]/g, '').trim());
+    others.push($(this).html());
   });
   return others;
 };
 
 BBC.prototype.all = function() {
-  return this.top() + this.second() + this.third() + this.others();
+  var all = this.top() + this.second() + this.third() + this.others();
+  return all.replace(/[\n\r\t]/g, '').trim();
 };
 
 module.exports = BBC;

@@ -11,7 +11,7 @@ Sky.prototype.top = function() {
 Sky.prototype.secondary = function() {
   var secondary = [];
   this.$html.find('#latest_secondary > article').each(function() {
-    secondary.push($(this).html().replace(/[\n\r\t]/g, '').trim());
+    secondary.push($(this).html());
   });
   return secondary;
 };
@@ -19,13 +19,14 @@ Sky.prototype.secondary = function() {
 Sky.prototype.tertiary = function() {
   var tertiary = [];
   this.$html.find('#latest_tertiary > article').each(function() {
-    tertiary.push($(this).html().replace(/[\n\r\t]/g, '').trim());
+    tertiary.push($(this).html());
   });
   return tertiary;
 };
 
 Sky.prototype.all = function() {
-  return this.top() + this.secondary() + this.tertiary();
+  var all = this.top() + this.secondary() + this.tertiary();
+  return all.replace(/[\n\r\t]/g, '').trim();
 };
 
 module.exports = Sky;
