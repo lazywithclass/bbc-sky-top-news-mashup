@@ -15,7 +15,7 @@ describe 'sky scraping :)', ->
 
   describe 'top story', ->
 
-    it 'exports a function', ->
+    it 'is a function', ->
       scraper.top.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
@@ -24,7 +24,7 @@ describe 'sky scraping :)', ->
 
   describe 'secondary stories', ->
 
-    it 'exports a function', ->
+    it 'is a function', ->
       scraper.secondary.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
@@ -37,7 +37,7 @@ describe 'sky scraping :)', ->
 
   describe 'tertiary stories', ->
 
-    it 'exports a function', ->
+    it 'is a function', ->
       scraper.tertiary.should.be.type 'function'
 
     it 'parses the html extracting the other stories', ->
@@ -50,3 +50,12 @@ describe 'sky scraping :)', ->
       tertiary[3].should.include 'Latest Oz'
       tertiary[4].should.include 'Romanian PM'
       tertiary[5].should.include 'Trial Marine'
+
+  describe 'complete', ->
+
+    it 'is a function', ->
+      scraper.complete.should.be.type 'function'
+
+    it 'concatenates all information', ->
+      complete = scraper.top() + scraper.secondary() + scraper.tertiary();
+      scraper.complete().should.be.equal complete

@@ -24,4 +24,8 @@ Sky.prototype.tertiary = function() {
   return tertiary;
 };
 
+Sky.prototype.complete = function() {
+  return this.top() + this.secondary() + this.tertiary();
+};
+
 module.exports = Sky;

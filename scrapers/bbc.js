@@ -33,4 +33,8 @@ BBC.prototype.others = function(amount) {
   return others;
 };
 
+BBC.prototype.complete = function() {
+  return this.top() + this.second() + this.third() + this.others();
+};
+
 module.exports = BBC;

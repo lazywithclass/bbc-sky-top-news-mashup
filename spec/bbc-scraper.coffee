@@ -15,7 +15,7 @@ describe 'bbc scraping', ->
 
   describe 'top story', ->
 
-    it 'exports a function', ->
+    it 'is a function', ->
       scraper.top.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
@@ -24,7 +24,7 @@ describe 'bbc scraping', ->
 
   describe 'second story', ->
 
-    it 'exports a function', ->
+    it 'is a function', ->
       scraper.second.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
@@ -33,7 +33,7 @@ describe 'bbc scraping', ->
 
   describe 'third story', ->
 
-    it 'exports a function', ->
+    it 'is a function', ->
       scraper.third.should.be.type 'function'
 
     it 'parses the html extracting the story', ->
@@ -42,7 +42,7 @@ describe 'bbc scraping', ->
 
   describe 'other stories with summary', ->
 
-    it 'exports a function', ->
+    it 'is a function', ->
       scraper.othersWithSummary.should.be.type 'function'
 
     it 'parses the html extracting the other stories with a summary', ->
@@ -55,7 +55,7 @@ describe 'bbc scraping', ->
 
   describe 'other stories', ->
 
-    it 'exports a function', ->
+    it 'is a function', ->
      scraper.others.should.be.type 'function'
 
     it 'parses the html extracting the other stories', ->
@@ -64,3 +64,12 @@ describe 'bbc scraping', ->
       scraper.others(3).length.should.equal 3
       scraper.others(6).length.should.equal 6
       scraper.others().length.should.equal 4
+
+  describe 'complete', ->
+        
+    it 'is a function', ->
+      scraper.complete.should.be.type 'function'
+
+    it 'concatenates all information', ->
+      complete = scraper.top() + scraper.second() + scraper.third() + scraper.others();
+      scraper.complete().should.be.equal complete
