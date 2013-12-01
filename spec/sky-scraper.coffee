@@ -9,7 +9,7 @@ describe 'testing', ->
       this.scraper = new Scraper html
       done()
 
-describe 'sky scraping :)', ->
+describe 'sky scraping', ->
 
   domify = (fragment) -> $("<html><body>#{fragment}</body></html>")
 
@@ -57,5 +57,5 @@ describe 'sky scraping :)', ->
       scraper.all.should.be.type 'function'
 
     it 'concatenates all news removing whitespace', ->
-      all = scraper.top() + scraper.secondary() + scraper.tertiary()
+      all = scraper.top() + scraper.secondary().join('') + scraper.tertiary().join('')
       scraper.all().should.be.equal all.replace(/[\n\r\t]/g, '').trim()

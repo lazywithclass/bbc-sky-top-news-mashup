@@ -37,7 +37,7 @@ BBC.prototype.others = function(amount) {
 };
 
 BBC.prototype.all = function() {
-  var all = this.top() + this.second() + this.third() + this.others();
+  var all = this.top() + this.second() + this.third() + this.others().join('');
   return all.replace(/[\n\r\t]/g, '').trim();
 };
 

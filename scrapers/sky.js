@@ -25,7 +25,7 @@ Sky.prototype.tertiary = function() {
 };
 
 Sky.prototype.all = function() {
-  var all = this.top() + this.secondary() + this.tertiary();
+  var all = this.top() + this.secondary().join('') + this.tertiary().join('');
   return all.replace(/[\n\r\t]/g, '').trim();
 };
 
