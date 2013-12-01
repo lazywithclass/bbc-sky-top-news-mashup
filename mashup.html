@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  </head>
+  
+  <body>
+    <script type="text/javascript">
+      var baseUrl = 'http://localhost:8080';
+      $(function() {
+          $.ajax(baseUrl + '/bbc').success(function(data) {
+              $('#bbc').html(data);
+          })
+          $.ajax(baseUrl + '/sky').success(function(data) {
+              $('#sky').html(data);
+          })
+      })
+    </script>
+    
+    <div class="col-md-6">
+      <h2>BBC top news</h2>
+      <div id="bbc"></div>
+    </div>
+    <div class="col-md-6">
+      <h2>Sky top news</h2>
+      <div id="sky"></div>
+    </div>
+  </body>
+  
+</html>
