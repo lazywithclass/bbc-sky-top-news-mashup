@@ -5,6 +5,10 @@
  * All data should go through the nodejs server
  * Please use github for source control
 
+### Howto
+
+Run the server and open `mashup.html`.
+
 ### Features
 
 The server exposes two endpoints
