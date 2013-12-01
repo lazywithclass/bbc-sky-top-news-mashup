@@ -63,7 +63,7 @@ describe 'bbc scraping', ->
       others.should.be.instanceOf Array
       scraper.others(3).length.should.equal 3
       scraper.others(6).length.should.equal 6
-      scraper.others().length.should.equal 4
+      scraper.others().length.should.equal 7
 
   describe 'all news', ->
         

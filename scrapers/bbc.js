@@ -16,6 +16,9 @@ BBC.prototype.third = function() {
   return this.$html.find('#third-story').html();
 };
 
+// seems unlikely but BBC changed how the following elements are shown
+// when I first coded this there was a with-summary class, now there's not
+// I'm leaving this here in case the reason is different from what I think
 BBC.prototype.othersWithSummary = function() {
   var othersWithSummary = [];
   this.$html.find('ul.other-top-stories-stories > li.with-summary').each(function() {
@@ -26,7 +29,7 @@ BBC.prototype.othersWithSummary = function() {
 
 BBC.prototype.others = function(amount) {
   var others = [];
-  amount = amount || 4;
+  amount = amount || 7;
   this.$html.find('ul.other-top-stories-stories > li:not(.with-summary) :lt(' + amount + ')').each(function() {
     others.push($(this).html().replace(/[\n\r\t]/g, '').trim());
   });
