@@ -1,4 +1,4 @@
-## News Website with the following requirements:
+## Requirements
 
  * Display top 10 headlines from the BBC and SKY on a webpage
  * Use a node.js server
