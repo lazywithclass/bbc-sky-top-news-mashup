@@ -15,37 +15,37 @@ describe 'bbc scraping', ->
 
   describe 'top story', ->
 
-    it 'is a function', ->
+    it 'is obtained from a function', ->
       scraper.top.should.be.type 'function'
 
-    it 'parses the html extracting the story', ->
+    it 'is extracted from the html', ->
       top = scraper.top()
       domify(top).find('.top-story-header a').html().should.contain 'China jets scrambled in air zone'
 
   describe 'second story', ->
 
-    it 'is a function', ->
+    it 'is obtained from a function', ->
       scraper.second.should.be.type 'function'
 
-    it 'parses the html extracting the story', ->
+    it 'is parsed from the html', ->
       second = scraper.second()
       domify(second).find('.secondary-story-header a').html().should.contain 'EU rejects Russia \'veto\' on Ukraine'
 
   describe 'third story', ->
 
-    it 'is a function', ->
+    it 'is obtained from a function', ->
       scraper.third.should.be.type 'function'
 
-    it 'parses the html extracting the story', ->
+    it 'is parsed from the html', ->
       third = scraper.third()
       domify(third).find('.secondary-story-header a').html().should.contain 'German policeman in \'cannibal\' case'
 
   describe 'other stories with summary', ->
 
-    it 'is a function', ->
+    it 'is obtained from a function', ->
       scraper.othersWithSummary.should.be.type 'function'
 
-    it 'parses the html extracting the other stories with a summary', ->
+    it 'are parsed from the html', ->
       othersWithSummary = scraper.othersWithSummary()
       othersWithSummary.should.be.instanceOf Array
       othersWithSummary.length.should.equal 3
@@ -55,21 +55,21 @@ describe 'bbc scraping', ->
 
   describe 'other stories', ->
 
-    it 'is a function', ->
+    it 'are obtained from a function', ->
      scraper.others.should.be.type 'function'
 
-    it 'parses the html extracting the other stories', ->
+    it 'are parsed from the html', ->
       others = scraper.others()
       others.should.be.instanceOf Array
       scraper.others(3).length.should.equal 3
       scraper.others(6).length.should.equal 6
       scraper.others().length.should.equal 4
 
-  describe 'complete', ->
+  describe 'all news', ->
         
-    it 'is a function', ->
-      scraper.complete.should.be.type 'function'
+    it 'are obtained from a function', ->
+      scraper.all.should.be.type 'function'
 
-    it 'concatenates all information', ->
-      complete = scraper.top() + scraper.second() + scraper.third() + scraper.others();
-      scraper.complete().should.be.equal complete
+    it 'concatenates all news', ->
+      all = scraper.top() + scraper.second() + scraper.third() + scraper.others();
+      scraper.all().should.be.equal all

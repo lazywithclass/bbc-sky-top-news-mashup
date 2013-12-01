@@ -15,19 +15,19 @@ describe 'sky scraping :)', ->
 
   describe 'top story', ->
 
-    it 'is a function', ->
+    it 'is obtained from a function', ->
       scraper.top.should.be.type 'function'
 
-    it 'parses the html extracting the story', ->
+    it 'is parsed from the html', ->
       top = scraper.top()
       domify(top).find('strong').html().should.contain 'Helicopter Crashes Into'
 
   describe 'secondary stories', ->
 
-    it 'is a function', ->
+    it 'are obtained from a function', ->
       scraper.secondary.should.be.type 'function'
 
-    it 'parses the html extracting the story', ->
+    it 'are parsed from the html', ->
       secondary = scraper.secondary()
       secondary.should.be.instanceOf Array
       secondary.length.should.equal 3
@@ -37,10 +37,10 @@ describe 'sky scraping :)', ->
 
   describe 'tertiary stories', ->
 
-    it 'is a function', ->
+    it 'are obtained from a function', ->
       scraper.tertiary.should.be.type 'function'
 
-    it 'parses the html extracting the other stories', ->
+    it 'are parsed from the html', ->
       tertiary = scraper.tertiary()
       tertiary.should.be.instanceOf Array
       tertiary.length.should.equal 6
@@ -51,11 +51,11 @@ describe 'sky scraping :)', ->
       tertiary[4].should.include 'Romanian PM'
       tertiary[5].should.include 'Trial Marine'
 
-  describe 'complete', ->
+  describe 'all', ->
 
-    it 'is a function', ->
-      scraper.complete.should.be.type 'function'
+    it 'are obtained from a function', ->
+      scraper.all.should.be.type 'function'
 
-    it 'concatenates all information', ->
-      complete = scraper.top() + scraper.secondary() + scraper.tertiary();
-      scraper.complete().should.be.equal complete
+    it 'concatenates all news', ->
+      all = scraper.top() + scraper.secondary() + scraper.tertiary();
+      scraper.all().should.be.equal all

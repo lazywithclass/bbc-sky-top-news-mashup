@@ -33,7 +33,7 @@ BBC.prototype.others = function(amount) {
   return others;
 };
 
-BBC.prototype.complete = function() {
+BBC.prototype.all = function() {
   return this.top() + this.second() + this.third() + this.others();
 };
 

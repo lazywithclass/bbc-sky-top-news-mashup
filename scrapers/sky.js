@@ -24,7 +24,7 @@ Sky.prototype.tertiary = function() {
   return tertiary;
 };
 
-Sky.prototype.complete = function() {
+Sky.prototype.all = function() {
   return this.top() + this.secondary() + this.tertiary();
 };
 
