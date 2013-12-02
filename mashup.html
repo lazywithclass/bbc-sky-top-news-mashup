@@ -10,11 +10,20 @@
     <script type="text/javascript">
       var baseUrl = 'http://localhost:8080';
       $(function() {
+          function interceptClick (selector, url) {
+              $(selector).click(function(e) {
+                  e.preventDefault();
+                  window.location = url + $(this).attr('href');
+              });
+          }
+
           $.ajax(baseUrl + '/bbc').success(function(data) {
               $('#bbc').html(data);
+              interceptClick('#bbc a', 'http://www.bbc.co.uk');
           })
           $.ajax(baseUrl + '/sky').success(function(data) {
               $('#sky').html(data);
+              interceptClick('#sky a', 'http://news.sky.com/');
           })
       })
     </script>
